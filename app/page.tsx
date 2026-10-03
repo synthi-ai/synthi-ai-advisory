@@ -357,18 +357,22 @@ export default function Page() {
       <section className="news-section reveal-section" id="news">
         <div className="insights-head">
           <h2>Latest news</h2>
-          <a className="text-link" href="/news">
-            See all news <ArrowUpRight size={18} />
-          </a>
         </div>
         <div className="news-list">
           {news.map((item) => (
             <a href="/news" key={item.title}>
-              <span className="news-tag">{item.tag}</span>
-              <h3>{item.title}</h3>
+              <div className="news-text">
+                <span className="news-tag">{item.tag}</span>
+                <h3>{item.title}</h3>
+              </div>
               <span className="news-date">{item.date}</span>
             </a>
           ))}
+        </div>
+        <div className="news-footer">
+          <a className="text-link" href="/news">
+            See all news <ArrowUpRight size={18} />
+          </a>
         </div>
       </section>
 
