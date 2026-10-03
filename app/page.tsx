@@ -5,28 +5,30 @@ import { ArrowRight, ArrowUpRight } from 'lucide-react'
 import { SiteFooter } from '@/components/site-footer'
 import { SiteHeader } from '@/components/site-header'
 
+const CDN = 'https://www.capgemini.com/wp-content/uploads'
+
 const highlights = [
-  { tag: 'Public sector', title: 'Data and AI in government', image: 'https://images.unsplash.com/photo-1529107386315-e1a2ed48a620?auto=format&fit=crop&w=1200&q=85' },
-  { tag: 'Sustainability', title: 'A world in balance', image: 'https://images.unsplash.com/photo-1470770903676-69b98201ea1c?auto=format&fit=crop&w=1200&q=85' },
-  { tag: 'Client story', title: 'Henkel Consumer Brands accelerates sustainability progress', image: 'https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=1200&q=85' },
+  { tag: 'Public sector', title: 'Data and AI in government', image: `${CDN}/2026/07/Research-brief-Data-and-AI-in-Public-Sector_CommskitDotcom-banner-2880px-x-1800px.jpg?w=1200&quality=80` },
+  { tag: 'Sustainability', title: 'A world in balance', image: `${CDN}/2026/09/CRI-Sustainability-Trends-2026-Banner.jpg?w=1200&quality=80` },
+  { tag: 'Client story', title: 'Henkel Consumer Brands accelerates sustainability progress', image: `${CDN}/2026/09/Henkel-client-story-web-page-banner.jpg?w=1200&quality=80` },
 ]
 
 const insights = [
-  { tag: 'Report', title: 'World Payments Report 2027', image: 'https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=1200&q=85' },
-  { tag: 'Perspective', title: 'Open source: Key to reclaiming public sector digital sovereignty', image: 'https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1200&q=85' },
-  { tag: 'Research', title: 'Data-powered Innovation Review | Wave 12', image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=85' },
+  { tag: 'Report', title: 'World Payments Report 2027', image: `${CDN}/2026/09/Capcom-banner_2880x1800px-1.jpg?w=1200&quality=80` },
+  { tag: 'Perspective', title: 'Open source: Key to reclaiming public sector digital sovereignty', image: `${CDN}/2026/09/Digital-Sovereignty-Services-page.jpg?w=1200&quality=80` },
+  { tag: 'Research', title: 'Data-powered Innovation Review | Wave 12', image: `${CDN}/2026/06/DPIR12_Webbanner-2880X1800.jpg?w=1200&quality=80` },
 ]
 
 const clientStories = [
-  { tag: 'Sport', title: 'With AI, World Rugby leaves nothing on the field', image: 'https://images.unsplash.com/photo-1544298621-35a989e4e54a?auto=format&fit=crop&w=1200&q=85' },
-  { tag: 'Public sector', title: "Inspiring digital inclusion with Let's Get Digital Durham", image: 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1200&q=85' },
-  { tag: 'Energy', title: 'Accelerating the European battery industry', image: 'https://images.unsplash.com/photo-1593941707882-a5bba14938c7?auto=format&fit=crop&w=1200&q=85' },
+  { tag: 'Sport', title: 'With AI, World Rugby leaves nothing on the field', image: `${CDN}/2026/04/World-Rugby-TryZone-IQ-client-story-web-page-banner.jpg?w=1200&quality=80` },
+  { tag: 'Public sector', title: "Inspiring digital inclusion with Let's Get Digital Durham", image: `${CDN}/2026/06/Home-Office-Lets-Get-Digital-Durham-client-story-web-page-banner.jpg?w=1200&quality=80` },
+  { tag: 'Energy', title: 'Accelerating the European battery industry', image: `${CDN}/2026/08/Verkor-client-story-web-page-banner.jpg?w=1200&quality=80` },
 ]
 
 const insideStories = [
-  { tag: 'Careers', title: 'The code for careers in tech', image: 'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1200&q=85' },
-  { tag: 'Innovation', title: 'DNA analysis for wildlife conservation', image: 'https://images.unsplash.com/photo-1564349683136-77e08dba1ef7?auto=format&fit=crop&w=1200&q=85' },
-  { tag: 'Sustainability', title: 'Protecting water quality in reservoirs with AI', image: 'https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=1200&q=85' },
+  { tag: 'Careers', title: 'The code for careers in tech', image: `${CDN}/2026/05/1634912046468.jpeg?w=1200&quality=80` },
+  { tag: 'Innovation', title: 'DNA analysis for wildlife conservation', image: `${CDN}/2026/02/Gene-Genius-new.jpg?w=1200&quality=80` },
+  { tag: 'Sustainability', title: 'Protecting water quality in reservoirs with AI', image: `${CDN}/2026/02/web-banner_algal-blooms.png?w=1200&quality=80` },
 ]
 
 const news = [

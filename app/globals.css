@@ -66,7 +66,7 @@ button {
   position: absolute;
   inset: 0;
   z-index: -2;
-  background: linear-gradient(90deg, rgba(4, 18, 34, .9), rgba(6, 32, 58, .5), rgba(8, 40, 72, .12)), url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=2200&q=90') center/cover;
+  background: linear-gradient(90deg, rgba(4, 18, 34, .9), rgba(6, 32, 58, .5), rgba(8, 40, 72, .12)), url('https://www.capgemini.com/wp-content/uploads/2026/09/Digital-Sovereignty-Services-page.jpg') center/cover;
   filter: saturate(.85);
   animation: heroZoom 14s ease-out both;
 }
@@ -420,7 +420,7 @@ button {
 
 .feature-image {
   min-height: 560px;
-  background: url('https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=1800&q=90') center/cover;
+  background: url('https://www.capgemini.com/wp-content/uploads/2026/05/Capgemini_2800x1880-HP.jpg?w=1800&quality=80') center/cover;
   filter: saturate(.75);
   transition: transform .7s;
 }
