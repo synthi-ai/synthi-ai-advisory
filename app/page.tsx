@@ -1,53 +1,64 @@
 'use client'
 
-import { FormEvent, useState } from 'react'
-import { ArrowRight, ArrowUpRight } from 'lucide-react'
+import { useEffect, useState } from 'react'
+import { ArrowUpRight } from 'lucide-react'
 import { SiteFooter } from '@/components/site-footer'
 import { SiteHeader } from '@/components/site-header'
 
 const CDN = 'https://www.capgemini.com/wp-content/uploads'
 
 const highlights = [
-  { tag: 'Public sector', title: 'Data and AI in government', image: `${CDN}/2026/07/Research-brief-Data-and-AI-in-Public-Sector_CommskitDotcom-banner-2880px-x-1800px.jpg?w=1200&quality=80` },
-  { tag: 'Sustainability', title: 'A world in balance', image: `${CDN}/2026/09/CRI-Sustainability-Trends-2026-Banner.jpg?w=1200&quality=80` },
-  { tag: 'Client story', title: 'Henkel Consumer Brands accelerates sustainability progress', image: `${CDN}/2026/09/Henkel-client-story-web-page-banner.jpg?w=1200&quality=80` },
+  { tag: 'Public sector', title: 'Data and AI in government', body: 'Building an AI-driven public sector', image: `${CDN}/2026/07/Research-brief-Data-and-AI-in-Public-Sector_CommskitDotcom-banner-2880px-x-1800px.jpg?w=1200&quality=80` },
+  { tag: 'Sustainability', title: 'A world in balance', body: 'Strengthening resilience through sustainability', image: `${CDN}/2026/09/CRI-Sustainability-Trends-2026-Banner.jpg?w=1200&quality=80` },
+  { tag: 'Client story', title: 'Henkel Consumer Brands accelerates sustainability progress', body: 'A vision becomes reality', image: `${CDN}/2026/09/Henkel-client-story-web-page-banner.jpg?w=1200&quality=80` },
 ]
 
 const insights = [
   { tag: 'Report', title: 'World Payments Report 2027', image: `${CDN}/2026/09/Capcom-banner_2880x1800px-1.jpg?w=1200&quality=80` },
-  { tag: 'Perspective', title: 'Open source: Key to reclaiming public sector digital sovereignty', image: `${CDN}/2026/09/Digital-Sovereignty-Services-page.jpg?w=1200&quality=80` },
-  { tag: 'Research', title: 'Data-powered Innovation Review | Wave 12', image: `${CDN}/2026/06/DPIR12_Webbanner-2880X1800.jpg?w=1200&quality=80` },
+  { tag: 'Capgemini Research Institute', title: 'Open source: Key to reclaiming public sector digital sovereignty', image: `${CDN}/2026/09/Digital-Sovereignty-Services-page.jpg?w=1200&quality=80` },
+  { tag: 'Report', title: 'Data-powered Innovation Review | Wave 12', image: `${CDN}/2026/06/DPIR12_Webbanner-2880X1800.jpg?w=1200&quality=80` },
 ]
 
 const clientStories = [
-  { tag: 'Sport', title: 'With AI, World Rugby leaves nothing on the field', image: `${CDN}/2026/04/World-Rugby-TryZone-IQ-client-story-web-page-banner.jpg?w=1200&quality=80` },
-  { tag: 'Public sector', title: "Inspiring digital inclusion with Let's Get Digital Durham", image: `${CDN}/2026/06/Home-Office-Lets-Get-Digital-Durham-client-story-web-page-banner.jpg?w=1200&quality=80` },
-  { tag: 'Energy', title: 'Accelerating the European battery industry', image: `${CDN}/2026/08/Verkor-client-story-web-page-banner.jpg?w=1200&quality=80` },
-]
-
-const insideStories = [
-  { tag: 'Careers', title: 'The code for careers in tech', image: `${CDN}/2026/05/1634912046468.jpeg?w=1200&quality=80` },
-  { tag: 'Innovation', title: 'DNA analysis for wildlife conservation', image: `${CDN}/2026/02/Gene-Genius-new.jpg?w=1200&quality=80` },
-  { tag: 'Sustainability', title: 'Protecting water quality in reservoirs with AI', image: `${CDN}/2026/02/web-banner_algal-blooms.png?w=1200&quality=80` },
+  { title: 'With AI, World Rugby leaves nothing on the field', body: 'See how AI is surfacing new match insights in real time, giving fans a more complete and engaging view of the Rugby World Cup than ever before', image: `${CDN}/2026/04/World-Rugby-TryZone-IQ-client-story-web-page-banner.jpg?w=1200&quality=80` },
+  { title: "Inspiring digital inclusion with Let's Get Digital Durham", body: 'A community-driven digital inclusion initiative delivered with the Home Office and Digital Unite, equipping volunteers and organizations with the skills to improve digital access and confidence across County Durham', image: `${CDN}/2026/06/Home-Office-Lets-Get-Digital-Durham-client-story-web-page-banner.jpg?w=1200&quality=80` },
+  { title: 'Accelerating the European battery industry', body: 'Verkor and Capgemini develop a blueprint for digital solutions that will support the start-up and ramp-up of the low-carbon battery gigafactory in Dunkirk', image: `${CDN}/2026/08/Verkor-client-story-web-page-banner.jpg?w=1200&quality=80` },
 ]
 
 const news = [
-  { date: '25 Sep 2026', title: 'Capgemini positioned as a Leader in generative AI services' },
-  { date: '18 Sep 2026', title: 'Capgemini and partners expand digital sovereignty offering across Europe' },
-  { date: '11 Sep 2026', title: 'Capgemini recognized for its commitment to sustainable IT' },
-  { date: '04 Sep 2026', title: 'Capgemini reports first half 2026 results' },
+  { tag: 'Corporate news', title: 'Capgemini closes the sale of Capgemini Government Solutions', date: 'Sep 30, 2026' },
+  { tag: 'Client news', title: "Capgemini plays a key role in enabling Sweden's next-generation emergency communications network", date: 'Sep 29, 2026' },
+  { tag: 'Reports', title: 'Banks risk losing $230 billion in payments revenue as stablecoins and tokenized deposits go mainstream', date: 'Sep 24, 2026' },
+  { tag: 'Client news', title: 'Capgemini contributes to EURO-3C, a European initiative advancing secure and interoperable digital infrastructure', date: 'Sep 17, 2026' },
 ]
 
-function CardGrid({ items }: { items: { tag: string; title: string; image: string }[] }) {
+const insideStories = [
+  { tag: 'Inclusion', title: 'The code for careers in tech', body: 'Job-ready tech skills for a more inclusive future', image: `${CDN}/2026/05/1634912046468.jpeg?w=1200&quality=80` },
+  { tag: 'Future-shaping projects', title: 'DNA analysis for wildlife conservation', body: 'Helping conservationists conduct genetic analysis in the field to protect vulnerable species', image: `${CDN}/2026/02/Gene-Genius-new.jpg?w=1200&quality=80` },
+  { tag: 'Future-shaping projects', title: 'Protecting water quality in reservoirs with AI', body: 'An early detection system to monitor and remove harmful algal blooms', image: `${CDN}/2026/02/web-banner_algal-blooms.png?w=1200&quality=80` },
+]
+
+const promos = [
+  { title: 'Discover our 2025 Integrated Annual Report', body: 'Capgemini is a global leader in business and technology transformation, powered by AI.', cta: 'Discover more', href: '/investors', image: `${CDN}/2021/08/Capgemini_Careers_Engineering-2-e1644505041921.jpg?w=1600&quality=80`, reverse: false },
+  { title: 'Transforming sports', body: "Bringing expertise and passion for innovation and technology to Tour de France, the Ryder Cup, the America's Cup, rugby, and motorsport.", cta: 'Discover more', href: '/about', image: `${CDN}/2026/05/Capgemini_2800x1880-HP.jpg?w=1600&quality=80`, reverse: true },
+  { title: 'Capgemini Research Institute', body: '#1 in the world six consecutive times – an industry first.', cta: 'Take a closer look', href: '/insights', image: `${CDN}/2022/11/Capgemini-Header-1440x900-1.png?w=1600&quality=80`, reverse: false },
+  { title: 'Capgemini Invent', body: 'Our powerhouse of innovation, design and transformation.', cta: 'Find out more', href: '/about', image: `${CDN}/2022/04/Capgemini_CRI_hero-banner_V1.jpg?w=1600&quality=80`, reverse: true },
+  { title: 'Capgemini Engineering', body: "Helping the world's largest innovators engineer the products and services of tomorrow", cta: 'Find out more', href: '/about', image: `${CDN}/2022/03/Capgemini_Services_Data-and-AI_2.jpg?w=1600&quality=80`, reverse: false },
+]
+
+type Card = { tag?: string; title: string; body?: string; image: string }
+
+function CardGrid({ items, cta = 'Read more' }: { items: Card[]; cta?: string }) {
   return (
     <div className="cards">
       {items.map((card, index) => (
-        <article className="insight-card" key={card.title}>
+        <article className="insight-card reveal-section" key={card.title}>
           <div className="card-image" style={{ backgroundImage: `url(${card.image})` }}><span>0{index + 1}</span></div>
           <div className="card-body">
-            <p>{card.tag}</p>
+            {card.tag && <p className="card-tag">{card.tag}</p>}
             <h3>{card.title}</h3>
-            <a href="/insights">Read more <ArrowUpRight size={16} /></a>
+            {card.body && <p className="card-text">{card.body}</p>}
+            <a href="/insights">{cta} <ArrowUpRight size={16} /></a>
           </div>
         </article>
       ))}
@@ -57,41 +68,85 @@ function CardGrid({ items }: { items: { tag: string; title: string; image: strin
 
 export default function Page() {
   const [cookieOpen, setCookieOpen] = useState(true)
-  const [newsletterSent, setNewsletterSent] = useState(false)
 
-  function submitNewsletter(event: FormEvent<HTMLFormElement>) {
-    event.preventDefault()
-    setNewsletterSent(true)
-  }
+  useEffect(() => {
+    const root = document.documentElement
+    root.classList.add('js')
+    const targets = Array.from(document.querySelectorAll<HTMLElement>('.reveal-section'))
+    const observer = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('in-view')
+            observer.unobserve(entry.target)
+          }
+        }
+      },
+      { rootMargin: '0px 0px -12% 0px', threshold: 0.12 },
+    )
+    targets.forEach((el) => observer.observe(el))
+    return () => observer.disconnect()
+  }, [])
 
   return (
     <main className="site">
       <SiteHeader />
       <section className="hero" id="top">
         <div className="hero-image" />
-        <div className="hero-content"><p className="eyebrow reveal-up">DIGITAL SOVEREIGNTY</p><h1 className="reveal-up delay-1">Strategic autonomy<br />for a more <em>resilient</em> enterprise.</h1><p className="hero-copy reveal-up delay-2">We help organizations build the capabilities to control their technology, data and operations — and shape their future with confidence.</p><a className="outline-link reveal-up delay-3" href="/services/digital-sovereignty">Explore digital sovereignty <ArrowUpRight size={18} /></a></div>
+        <div className="hero-content">
+          <h1 className="reveal-up delay-1">Digital<br /><em>sovereignty</em></h1>
+          <p className="hero-copy reveal-up delay-2">Strategic autonomy for a more resilient enterprise.</p>
+          <a className="outline-link reveal-up delay-3" href="/services/digital-sovereignty">Discover more <ArrowUpRight size={18} /></a>
+        </div>
         <div className="hero-caption"><span>Make it real</span><span>01 / 03</span></div>
         <div className="scroll-cue"><span>Scroll to explore</span><span className="scroll-line" /></div>
       </section>
 
-      <section className="intro reveal-section" id="discover"><div className="section-label">WHO WE ARE</div><div><h2>Unlocking the value of technology to build a more <span>inclusive and sustainable world.</span></h2><a className="text-link" href="/about">Discover Capgemini <ArrowUpRight size={18} /></a></div></section>
-      <section className="stats-strip"><div><strong>340,000+</strong><span>team members</span></div><div><strong>50+</strong><span>countries</span></div><div><strong>€22.5bn</strong><span>2024 revenue</span></div><div><strong>1967</strong><span>founded in Grenoble</span></div></section>
+      <section className="insights reveal-section" id="highlights">
+        <div className="insights-head"><h2>Highlights</h2></div>
+        <CardGrid items={highlights} />
+        <p className="section-statement reveal-section">We deliver real value through our people-centric approach and unique human-AI chemistry.</p>
+      </section>
 
-      <section className="insights reveal-section" id="highlights"><div className="insights-head"><div><p className="eyebrow dark-eyebrow">HIGHLIGHTS</p><h2>What&apos;s happening<br /><span>at Capgemini.</span></h2></div><a className="text-link" href="/insights">View all <ArrowUpRight size={18} /></a></div><CardGrid items={highlights} /></section>
+      <section className="insights reveal-section" id="insights">
+        <div className="insights-head"><h2>Latest insights</h2><a className="text-link" href="/insights">More insights <ArrowUpRight size={18} /></a></div>
+        <CardGrid items={insights} />
+      </section>
 
-      <section className="feature-grid reveal-section" id="services"><div className="feature-copy"><p className="eyebrow dark-eyebrow">OUR EXPERTISE</p><h2>Technology is the key to progress.</h2><p>At Capgemini, we combine the strength of our global teams with deep industry expertise to help businesses navigate complexity and create lasting impact.</p><a className="dark-link" href="/services">Explore our services <ArrowUpRight size={18} /></a></div><div className="feature-image" /></section>
-      <section className="services-band"><p className="eyebrow dark-eyebrow">WHAT WE DO</p><div className="service-row"><a href="/services/cloud"><span>01</span><h3>Cloud</h3><ArrowUpRight /></a><a href="/services/data-and-artificial-intelligence"><span>02</span><h3>Data and artificial intelligence</h3><ArrowUpRight /></a><a href="/services/cybersecurity"><span>03</span><h3>Cybersecurity</h3><ArrowUpRight /></a><a href="/services/intelligent-industry"><span>04</span><h3>Intelligent industry</h3><ArrowUpRight /></a></div></section>
+      <section className="insights reveal-section" id="client-stories">
+        <div className="insights-head"><h2>Recent client stories</h2></div>
+        <CardGrid items={clientStories} />
+      </section>
 
-      <section className="insights reveal-section" id="insights"><div className="insights-head"><div><p className="eyebrow dark-eyebrow">LATEST INSIGHTS</p><h2>Ideas that move<br /><span>the world forward.</span></h2></div><a className="text-link" href="/insights">View all insights <ArrowUpRight size={18} /></a></div><CardGrid items={insights} /></section>
+      <section className="news-section reveal-section" id="news">
+        <div className="insights-head"><h2>Latest news</h2><a className="text-link" href="/news">See all news <ArrowUpRight size={18} /></a></div>
+        <div className="news-list">
+          {news.map((item) => (
+            <a href="/news" key={item.title}>
+              <span className="news-tag">{item.tag}</span>
+              <h3>{item.title}</h3>
+              <span className="news-date">{item.date}</span>
+            </a>
+          ))}
+        </div>
+      </section>
 
-      <section className="insights reveal-section" id="client-stories"><div className="insights-head"><div><p className="eyebrow dark-eyebrow">RECENT CLIENT STORIES</p><h2>Transformation,<br /><span>made real.</span></h2></div><a className="text-link" href="/insights">View all stories <ArrowUpRight size={18} /></a></div><CardGrid items={clientStories} /></section>
+      <section className="insights reveal-section" id="inside-stories">
+        <div className="insights-head"><h2>Inside stories</h2><a className="text-link" href="/insights">View all <ArrowUpRight size={18} /></a></div>
+        <CardGrid items={insideStories} />
+      </section>
 
-      <section className="services-band" id="news"><p className="eyebrow dark-eyebrow">LATEST NEWS</p><div className="service-row">{news.map((item) => <a href="/news" key={item.title}><span>{item.date}</span><h3>{item.title}</h3><ArrowUpRight /></a>)}</div></section>
+      {promos.map((promo) => (
+        <section className={`promo-band reveal-section${promo.reverse ? ' reverse' : ''}`} key={promo.title}>
+          <div className="promo-copy">
+            <h2>{promo.title}</h2>
+            <p>{promo.body}</p>
+            <a className="dark-link" href={promo.href}>{promo.cta} <ArrowUpRight size={18} /></a>
+          </div>
+          <div className="promo-image" style={{ backgroundImage: `url(${promo.image})` }} />
+        </section>
+      ))}
 
-      <section className="insights reveal-section" id="inside-stories"><div className="insights-head"><div><p className="eyebrow dark-eyebrow">INSIDE STORIES</p><h2>The people behind<br /><span>the technology.</span></h2></div><a className="text-link" href="/insights">View all <ArrowUpRight size={18} /></a></div><CardGrid items={insideStories} /></section>
-
-      <section className="newsletter"><div><p className="eyebrow">STAY CONNECTED</p><h2>Get the future<br /><em>you want.</em></h2></div><form onSubmit={submitNewsletter}>{newsletterSent ? <p className="newsletter-success">Thank you. You’re on the list.</p> : <><label htmlFor="email">Business email</label><div className="newsletter-input"><input id="email" type="email" required placeholder="you@company.com" /><button aria-label="Subscribe"><ArrowRight /></button></div><small>By subscribing, you agree to our privacy notice.</small></>}</form></section>
-      <section className="cta"><p className="eyebrow">JOIN US</p><h2>Make it<br /><em>real.</em></h2><a className="outline-link" href="/careers">Explore careers <ArrowUpRight size={18} /></a></section>
       <SiteFooter />
       {cookieOpen && <div className="cookie-banner"><div><strong>Capgemini cares about your privacy</strong><p>We use cookies to enhance your experience on our website and to improve our services. Choose your preferences at any time.</p></div><div className="cookie-actions"><button onClick={() => setCookieOpen(false)}>Accept all</button><button onClick={() => setCookieOpen(false)}>Manage settings</button><button onClick={() => setCookieOpen(false)}>Decline all</button></div></div>}
     </main>
