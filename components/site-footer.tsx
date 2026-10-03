@@ -29,11 +29,11 @@ const legalLinks: [string, string][] = [
 ]
 
 const socials = [
-  { label: 'LinkedIn', href: 'https://www.linkedin.com/company/capgemini/', Icon: Linkedin },
-  { label: 'Instagram', href: 'https://www.instagram.com/capgemini/', Icon: Instagram },
-  { label: 'Facebook', href: 'https://www.facebook.com/Capgemini/', Icon: Facebook },
-  { label: 'YouTube', href: 'https://www.youtube.com/user/capgeminimedia', Icon: Youtube },
-  { label: 'Glassdoor', href: 'https://www.glassdoor.com/Overview/Working-at-Capgemini', Icon: Glassdoor },
+  { label: 'LinkedIn', href: 'https://www.linkedin.com/company/synthi-ai-advisory/', Icon: Linkedin },
+  { label: 'Instagram', href: 'https://www.instagram.com/synthi.ai.advisory/', Icon: Instagram },
+  { label: 'Facebook', href: 'https://www.facebook.com/synthi.ai.advisory/', Icon: Facebook },
+  { label: 'YouTube', href: 'https://www.youtube.com/@synthi-ai-advisory', Icon: Youtube },
+  { label: 'Glassdoor', href: 'https://www.glassdoor.com/Overview/Working-at-SYNTHI-AI-Advisory', Icon: Glassdoor },
 ]
 
 export function SiteFooter() {

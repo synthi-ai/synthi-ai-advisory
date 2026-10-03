@@ -24,7 +24,7 @@ export default function OpengraphImage() {
         <div style={{ display: 'flex', flexDirection: 'column' }}>
           <div style={{ fontSize: 96, fontWeight: 300, letterSpacing: -4, lineHeight: 1 }}>Make it real.</div>
           <div style={{ fontSize: 30, marginTop: 24, color: '#bde9f7', maxWidth: 820 }}>
-            Business and technology transformation, powered by AI.
+Africa’s partner for business and technology transformation, powered by AI.
           </div>
         </div>
       </div>

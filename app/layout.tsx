@@ -3,7 +3,7 @@ import './globals.css'
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://advisory.synthi-ai.org'
 const siteName = 'SYNTHI-AI Advisory'
-const description = 'SYNTHI-AI Advisory is a global business and technology transformation partner, helping organizations accelerate their dual transition to a digital and sustainable world — powered by AI.'
+const description = 'SYNTHI-AI Advisory is Africa’s business and technology transformation partner, helping organizations across the continent accelerate their dual transition to a digital and sustainable world — powered by AI.'
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),

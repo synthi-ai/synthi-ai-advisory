@@ -69,8 +69,8 @@ export function ContactView() {
           <p className="footer-heading">Other ways to connect</p>
           {otherWays.map((way) => <a href={way.href} key={way.label}>{way.label}<ArrowUpRight size={15} /></a>)}
           <div className="contact-hq">
-            <p className="footer-heading">Head office</p>
-            <p>SYNTHI-AI Advisory SE<br />11 rue de Tilsitt<br />75017 Paris, France</p>
+            <p className="footer-heading">Africa HQ</p>
+            <p>SYNTHI-AI Advisory<br />Victoria Island<br />Lagos, Nigeria</p>
           </div>
         </aside>
       </section>
