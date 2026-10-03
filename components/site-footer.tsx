@@ -12,11 +12,20 @@ function Facebook({ size = 18 }: { size?: number }) {
 function Youtube({ size = 18 }: { size?: number }) {
   return <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M23.5 6.2a3 3 0 0 0-2.12-2.12C19.5 3.56 12 3.56 12 3.56s-7.5 0-9.38.52A3 3 0 0 0 .5 6.2C0 8.08 0 12 0 12s0 3.92.5 5.8a3 3 0 0 0 2.12 2.12c1.88.52 9.38.52 9.38.52s7.5 0 9.38-.52a3 3 0 0 0 2.12-2.12C24 15.92 24 12 24 12s0-3.92-.5-5.8zM9.6 15.6V8.4l6.2 3.6-6.2 3.6z"/></svg>
 }
+function Glassdoor({ size = 18 }: { size?: number }) {
+  return <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18 3h-3v3h3v12H6v-3H3v3a3 3 0 0 0 3 3h12a3 3 0 0 0 3-3V6a3 3 0 0 0-3-3z"/><path d="M6 6h3V3H6a3 3 0 0 0-3 3v3h3V6z"/></svg>
+}
 
-const columns = [
-  { title: 'Explore', links: [['Insights', '/insights'], ['Industries', '/industries'], ['Services', '/services'], ['Careers', '/careers'], ['News', '/news'], ['About us', '/about'], ['Contact us', '/contact'], ['Investors', '/investors']] },
-  { title: 'Legal & policies', links: [['Accessibility', '/accessibility'], ['Cookie policy', '/cookies'], ['Cookie settings', '/cookies'], ['Privacy notice', '/privacy'], ['Security vulnerability notification', '/contact'], ['SpeakUp', '/contact'], ['Terms of use', '/privacy'], ['Fraud alert', '/contact']] },
-  { title: 'Our brands', links: [['Capgemini Engineering', '/about'], ['Capgemini Invent', '/about'], ['Sogeti', '/about'], ['Frog Design', '/about']] },
+const brands = ['Capgemini Engineering', 'Capgemini Invent', 'Sogeti', 'Frog Design']
+
+const navLinks: [string, string][] = [
+  ['Insights', '/insights'], ['Industries', '/industries'], ['Services', '/services'], ['Careers', '/careers'],
+  ['News', '/news'], ['About us', '/about'], ['Contact us', '/contact'], ['Investors', '/investors'],
+]
+
+const legalLinks: [string, string][] = [
+  ['Accessibility', '/accessibility'], ['Cookie policy', '/cookies'], ['Cookie settings', '/cookies'], ['Privacy notice', '/privacy'],
+  ['Security vulnerability notification', '/contact'], ['SpeakUp', '/contact'], ['Terms of use', '/privacy'], ['Fraud alert', '/contact'],
 ]
 
 const socials = [
@@ -24,37 +33,34 @@ const socials = [
   { label: 'Instagram', href: 'https://www.instagram.com/capgemini/', Icon: Instagram },
   { label: 'Facebook', href: 'https://www.facebook.com/Capgemini/', Icon: Facebook },
   { label: 'YouTube', href: 'https://www.youtube.com/user/capgeminimedia', Icon: Youtube },
+  { label: 'Glassdoor', href: 'https://www.glassdoor.com/Overview/Working-at-Capgemini', Icon: Glassdoor },
 ]
 
 export function SiteFooter() {
   return (
     <footer className="global-footer">
-      <div className="footer-top">
-        <a className="logo footer-logo" href="/">Capgemini</a>
-        <p>Get the future you want.<br />Technology, creativity and human ingenuity for a more inclusive and sustainable future.</p>
+      <div className="footer-brands">
+        {brands.map((brand) => <a className="footer-brand" href="/about" key={brand}>{brand}</a>)}
       </div>
       <div className="footer-columns">
-        {columns.map((column) => (
-          <div key={column.title}>
-            <p className="footer-heading">{column.title}</p>
-            {column.links.map(([label, href]) => (
-              <a href={href} key={label}>{label}<ArrowUpRight size={13} /></a>
+        <div className="footer-col">
+          {navLinks.map(([label, href]) => <a href={href} key={label}>{label}<ArrowUpRight size={13} /></a>)}
+        </div>
+        <div className="footer-col">
+          {legalLinks.map(([label, href]) => <a href={href} key={label}>{label}<ArrowUpRight size={13} /></a>)}
+        </div>
+        <div className="footer-connect">
+          <p className="footer-heading">Follow us</p>
+          <div className="footer-social">
+            {socials.map(({ label, href, Icon }) => (
+              <a href={href} key={label} target="_blank" rel="noreferrer" aria-label={label}><Icon size={18} /></a>
             ))}
           </div>
-        ))}
-      </div>
-      <div className="footer-social">
-        <span>Follow us</span>
-        <div>
-          {socials.map(({ label, href, Icon }) => (
-            <a href={href} key={label} target="_blank" rel="noreferrer" aria-label={label}><Icon size={18} /></a>
-          ))}
-          <a href="https://www.glassdoor.com/Overview/Working-at-Capgemini" target="_blank" rel="noreferrer" className="footer-glassdoor">Glassdoor</a>
         </div>
       </div>
       <div className="footer-bottom">
-        <span>© Capgemini 2026. All rights reserved.</span>
-        <span>Capgemini is a global business and technology transformation partner.</span>
+        <a className="logo footer-logo" href="/">Capgemini</a>
+        <span>© Capgemini, 2026. All rights reserved.</span>
       </div>
     </footer>
   )
