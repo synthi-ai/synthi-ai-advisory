@@ -2,54 +2,7 @@
 
 import { useState } from 'react'
 import { ArrowUpRight, ChevronDown, Globe2, Menu, Moon, Search, Sun, X } from 'lucide-react'
-
-type NavColumn = { heading?: string; links: string[] }
-type NavItem = { label: string; href: string; columns: NavColumn[] }
-
-const navItems: NavItem[] = [
-  {
-    label: 'Insights', href: '/insights', columns: [
-      { heading: 'Hot topics', links: ['Reshape your future with AI', 'Leading sustainability', 'The future of technology', 'Marketing for customer experience'] },
-      { heading: 'Explore', links: ['Conversations for tomorrow', 'The Scale Effect', 'Initiatives with the World Economic Forum', 'Our research library', 'Expert perspectives'] },
-    ],
-  },
-  {
-    label: 'Industries', href: '/industries', columns: [
-      { links: ['Aerospace and defense', 'Automotive', 'Banking and capital markets', 'Consumer products', 'Energy and utilities'] },
-      { links: ['Healthcare', 'High-tech', 'Hospitality and travel', 'Insurance', 'Life sciences'] },
-      { links: ['Manufacturing', 'Media and entertainment', 'Public sector', 'Retail', 'Telecoms'] },
-    ],
-  },
-  {
-    label: 'Services', href: '/services', columns: [
-      { links: ['Cloud', 'Customer first', 'Cybersecurity', 'Data and artificial intelligence'] },
-      { links: ['Digital sovereignty', 'Enterprise management', 'Intelligent industry', 'Sustainable business'] },
-    ],
-  },
-  {
-    label: 'Careers', href: '/careers', columns: [
-      { heading: 'Explore', links: ['Why join Capgemini', 'Life at Capgemini', 'Meet our people'] },
-      { heading: 'Career paths', links: ['Students and graduates', 'Experienced professionals', 'Executives', 'Our professions', 'Careers at Capgemini Engineering', 'Careers at Capgemini Invent'] },
-      { heading: 'Join us', links: ['Recruitment process', 'Interview tips', 'Job search'] },
-    ],
-  },
-  {
-    label: 'News', href: '/news', columns: [
-      { links: ['Press releases', 'Analyst recognition', 'Client stories', 'Inside stories', 'Social media', 'Events'] },
-    ],
-  },
-  {
-    label: 'About us', href: '/about', columns: [
-      { heading: 'Who we are', links: ['What we do', 'The way we work', 'Our innovation ecosystem', 'Values and Ethics', 'Our brands'] },
-      { heading: 'Management and governance', links: ['Board of Directors', 'Executive committee', 'Responsible business', 'Policies'] },
-      { heading: 'Corporate Social Responsibility', links: ['Digital inclusion', 'Diversity and inclusion', 'Environmental sustainability', 'Partnerships', 'Tech4Positive Futures'] },
-      { heading: 'Transforming sports', links: ['Peugeot Sport', 'Rugby', 'Ryder Cup', 'Tour de France', "The America's Cup"] },
-      { heading: 'More', links: ['Environment, Social & Governance', 'Technology partners', 'Locations'] },
-    ],
-  },
-]
-
-const slug = (value: string) => value.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '')
+import { navItems, slugify as slug } from '@/lib/nav-data'
 
 export function SiteHeader() {
   const [menuOpen, setMenuOpen] = useState(false)
@@ -90,5 +43,3 @@ export function SiteHeader() {
     {menuOpen && <div className="mobile-panel"><button onClick={() => setMenuOpen(false)} aria-label="Close menu"><X /></button>{navItems.map(item => <div className="mobile-nav-group" key={item.label}><button className="mobile-nav-trigger" onClick={() => setMobileExpanded(mobileExpanded === item.label ? null : item.label)} aria-expanded={mobileExpanded === item.label}>{item.label}<ChevronDown /></button>{mobileExpanded === item.label && <div className="mobile-subnav"><a href={item.href} onClick={() => setMenuOpen(false)}>Overview<ArrowUpRight size={16}/></a>{item.columns.map((column, columnIndex) => <div className="mobile-subcol" key={column.heading ?? columnIndex}>{column.heading && <p className="mobile-subhead">{column.heading}</p>}{column.links.map((link) => <a key={link} href={`${item.href}#${slug(link)}`} onClick={() => setMenuOpen(false)}>{link}<ArrowUpRight size={16}/></a>)}</div>)}</div>}</div>)}<a href="/contact" onClick={() => setMenuOpen(false)}>Contact us<ArrowUpRight size={18}/></a><a href="/investors" onClick={() => setMenuOpen(false)}>Investors<ArrowUpRight size={18}/></a><div className="mobile-utility-actions"><button onClick={() => { setMenuOpen(false); setSearchOpen(true) }}><Search size={17}/>Search</button><button onClick={() => { setMenuOpen(false); setCountryOpen(true) }}><Globe2 size={17}/>Global | EN</button><button onClick={() => { setDarkMode((value) => { const next = !value; document.documentElement.classList.toggle('dark', next); return next }); setMenuOpen(false) }}>{darkMode ? <Sun size={17}/> : <Moon size={17}/>} {darkMode ? 'Light' : 'Dark'}</button></div></div>}
   </>
 }
-
-export { navItems }
