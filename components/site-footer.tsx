@@ -16,7 +16,7 @@ function Glassdoor({ size = 18 }: { size?: number }) {
   return <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18 3h-3v3h3v12H6v-3H3v3a3 3 0 0 0 3 3h12a3 3 0 0 0 3-3V6a3 3 0 0 0-3-3z"/><path d="M6 6h3V3H6a3 3 0 0 0-3 3v3h3V6z"/></svg>
 }
 
-const brands = ['Capgemini Engineering', 'Capgemini Invent', 'Sogeti', 'Frog Design']
+const brands = ['SYNTHI-AI Advisory Engineering', 'SYNTHI-AI Advisory Invent', 'Sogeti', 'Frog Design']
 
 const navLinks: [string, string][] = [
   ['Insights', '/insights'], ['Industries', '/industries'], ['Services', '/services'], ['Careers', '/careers'],
@@ -59,8 +59,8 @@ export function SiteFooter() {
         </div>
       </div>
       <div className="footer-bottom">
-        <a className="logo footer-logo" href="/">Capgemini</a>
-        <span>© Capgemini, 2026. All rights reserved.</span>
+        <a className="logo footer-logo" href="/">SYNTHI-AI Advisory</a>
+        <span>© SYNTHI-AI Advisory, 2026. All rights reserved.</span>
       </div>
     </footer>
   )

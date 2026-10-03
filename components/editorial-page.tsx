@@ -10,8 +10,8 @@ const meta: Record<SectionKey, { eyebrow: string; title: string; intro: string; 
   industries: { eyebrow: 'INDUSTRIES', title: 'Deep expertise for every sector.', intro: 'We combine industry knowledge, technology and human ingenuity to help organizations perform and transform.', navLabel: 'Industries' },
   services: { eyebrow: 'SERVICES', title: 'Make technology work for your ambition.', intro: 'From strategy to scale, our teams turn transformation into measurable impact.', navLabel: 'Services' },
   careers: { eyebrow: 'CAREERS', title: 'Get the future you want.', intro: 'Join a community of more than 340,000 people building a more sustainable and inclusive future through technology.', navLabel: 'Careers' },
-  news: { eyebrow: 'NEWS', title: 'The latest from Capgemini.', intro: 'Discover our press releases, client stories, analyst recognition and events from around the world.', navLabel: 'News' },
-  about: { eyebrow: 'ABOUT US', title: 'A global leader in business and technology transformation.', intro: 'Capgemini helps organizations accelerate their dual transition to a digital and sustainable world, powered by AI.', navLabel: 'About us' },
+  news: { eyebrow: 'NEWS', title: 'The latest from SYNTHI-AI Advisory.', intro: 'Discover our press releases, client stories, analyst recognition and events from around the world.', navLabel: 'News' },
+  about: { eyebrow: 'ABOUT US', title: 'A global leader in business and technology transformation.', intro: 'SYNTHI-AI Advisory helps organizations accelerate their dual transition to a digital and sustainable world, powered by AI.', navLabel: 'About us' },
 }
 
 export function EditorialPage({ section }: { section: SectionKey }) {

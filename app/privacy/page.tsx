@@ -1,2 +1,10 @@
-import { UtilityPage } from '@/components/utility-page'
-export default function PrivacyPage() { return <UtilityPage page="privacy" /> }
+import type { Metadata } from 'next'
+import { LegalPage } from '@/components/legal-page'
+
+export const metadata: Metadata = {
+  title: 'Privacy notice',
+  description: 'How SYNTHI-AI Advisory collects, uses and safeguards your personal data.',
+  alternates: { canonical: '/privacy' },
+}
+
+export default function Page() { return <LegalPage page="privacy" /> }

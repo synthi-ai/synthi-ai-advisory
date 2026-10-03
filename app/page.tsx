@@ -35,7 +35,7 @@ const insights = [
     image: `${CDN}/2026/09/Capcom-banner_2880x1800px-1.jpg?w=1200&quality=80`,
   },
   {
-    tag: "Capgemini Research Institute",
+    tag: "SYNTHI-AI Advisory Research Institute",
     title: "Open source: Key to reclaiming public sector digital sovereignty",
     image: `${CDN}/2026/09/Digital-Sovereignty-Services-page.jpg?w=1200&quality=80`,
   },
@@ -59,7 +59,7 @@ const clientStories = [
   },
   {
     title: "Accelerating the European battery industry",
-    body: "Verkor and Capgemini develop a blueprint for digital solutions that will support the start-up and ramp-up of the low-carbon battery gigafactory in Dunkirk",
+    body: "Verkor and SYNTHI-AI Advisory develop a blueprint for digital solutions that will support the start-up and ramp-up of the low-carbon battery gigafactory in Dunkirk",
     image: `${CDN}/2026/08/Verkor-client-story-web-page-banner.jpg?w=1200&quality=80`,
   },
 ];
@@ -67,13 +67,13 @@ const clientStories = [
 const news = [
   {
     tag: "Corporate news",
-    title: "Capgemini closes the sale of Capgemini Government Solutions",
+    title: "SYNTHI-AI Advisory closes the sale of SYNTHI-AI Advisory Government Solutions",
     date: "Sep 30, 2026",
   },
   {
     tag: "Client news",
     title:
-      "Capgemini plays a key role in enabling Sweden's next-generation emergency communications network",
+      "SYNTHI-AI Advisory plays a key role in enabling Sweden's next-generation emergency communications network",
     date: "Sep 29, 2026",
   },
   {
@@ -85,7 +85,7 @@ const news = [
   {
     tag: "Client news",
     title:
-      "Capgemini contributes to EURO-3C, a European initiative advancing secure and interoperable digital infrastructure",
+      "SYNTHI-AI Advisory contributes to EURO-3C, a European initiative advancing secure and interoperable digital infrastructure",
     date: "Sep 17, 2026",
   },
 ];
@@ -114,7 +114,7 @@ const insideStories = [
 const promos = [
   {
     title: "Discover our 2025 Integrated Annual Report",
-    body: "Capgemini is a global leader in business and technology transformation, powered by AI.",
+    body: "SYNTHI-AI Advisory is a global leader in business and technology transformation, powered by AI.",
     cta: "Discover more",
     href: "/investors",
     image: `${CDN}/2021/08/Capgemini_Careers_Engineering-2-e1644505041921.jpg?w=1600&quality=80`,
@@ -129,7 +129,7 @@ const promos = [
     reverse: true,
   },
   {
-    title: "Capgemini Research Institute",
+    title: "SYNTHI-AI Advisory Research Institute",
     body: "#1 in the world six consecutive times – an industry first.",
     cta: "Take a closer look",
     href: "/insights",
@@ -137,7 +137,7 @@ const promos = [
     reverse: false,
   },
   {
-    title: "Capgemini Invent",
+    title: "SYNTHI-AI Advisory Invent",
     body: "Our powerhouse of innovation, design and transformation.",
     cta: "Find out more",
     href: "/about",
@@ -145,7 +145,7 @@ const promos = [
     reverse: true,
   },
   {
-    title: "Capgemini Engineering",
+    title: "SYNTHI-AI Advisory Engineering",
     body: "Helping the world's largest innovators engineer the products and services of tomorrow",
     cta: "Find out more",
     href: "/about",
@@ -392,7 +392,7 @@ export default function Page() {
       {cookieOpen && (
         <div className="cookie-banner">
           <div>
-            <strong>Capgemini cares about your privacy</strong>
+            <strong>SYNTHI-AI Advisory cares about your privacy</strong>
             <p>
               We use cookies to enhance your experience on our website and to
               improve our services. Choose your preferences at any time.

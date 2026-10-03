@@ -23,8 +23,8 @@ export const navItems: NavItem[] = [
   },
   {
     label: 'Careers', href: '/careers', columns: [
-      { heading: 'Explore', links: ['Why join Capgemini', 'Life at Capgemini', 'Meet our people'] },
-      { heading: 'Career paths', links: ['Students and graduates', 'Experienced professionals', 'Executives', 'Our professions', 'Careers at Capgemini Engineering', 'Careers at Capgemini Invent'] },
+      { heading: 'Explore', links: ['Why join SYNTHI-AI Advisory', 'Life at SYNTHI-AI Advisory', 'Meet our people'] },
+      { heading: 'Career paths', links: ['Students and graduates', 'Experienced professionals', 'Executives', 'Our professions', 'Careers at SYNTHI-AI Advisory Engineering', 'Careers at SYNTHI-AI Advisory Invent'] },
       { heading: 'Join us', links: ['Recruitment process', 'Interview tips', 'Job search'] },
     ],
   },
