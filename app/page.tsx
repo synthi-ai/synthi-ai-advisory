@@ -1,7 +1,7 @@
 'use client'
 
 import { useEffect, useState } from 'react'
-import { ArrowUpRight } from 'lucide-react'
+import { ArrowLeft, ArrowRight, ArrowUpRight } from 'lucide-react'
 import { SiteFooter } from '@/components/site-footer'
 import { SiteHeader } from '@/components/site-header'
 
@@ -45,6 +45,46 @@ const promos = [
   { title: 'Capgemini Invent', body: 'Our powerhouse of innovation, design and transformation.', cta: 'Find out more', href: '/about', image: `${CDN}/2022/04/Capgemini_CRI_hero-banner_V1.jpg?w=1600&quality=80`, reverse: true },
   { title: 'Capgemini Engineering', body: "Helping the world's largest innovators engineer the products and services of tomorrow", cta: 'Find out more', href: '/about', image: `${CDN}/2022/03/Capgemini_Services_Data-and-AI_2.jpg?w=1600&quality=80`, reverse: false },
 ]
+
+type Promo = { title: string; body: string; cta: string; href: string; image: string; reverse?: boolean }
+
+function PreFooterCarousel({ slides }: { slides: Promo[] }) {
+  const [index, setIndex] = useState(0)
+  const count = slides.length
+  const go = (delta: number) => setIndex((prev) => (prev + delta + count) % count)
+
+  useEffect(() => {
+    const timer = setInterval(() => setIndex((prev) => (prev + 1) % count), 7000)
+    return () => clearInterval(timer)
+  }, [count])
+
+  return (
+    <section className="prefooter-carousel reveal-section" aria-roledescription="carousel">
+      <div className="carousel-track" style={{ transform: `translateX(-${index * 100}%)` }}>
+        {slides.map((slide, i) => (
+          <div className="carousel-slide" key={slide.title} style={{ backgroundImage: `url(${slide.image})` }} aria-hidden={i !== index}>
+            <div className="carousel-content">
+              <h2>{slide.title}</h2>
+              <p>{slide.body}</p>
+              <a className="outline-link" href={slide.href}>{slide.cta} <ArrowUpRight size={18} /></a>
+            </div>
+          </div>
+        ))}
+      </div>
+      <div className="carousel-controls">
+        <div className="carousel-dots">
+          {slides.map((slide, i) => (
+            <button key={slide.title} className={i === index ? 'active' : ''} onClick={() => setIndex(i)} aria-label={`Go to slide ${i + 1}`} aria-current={i === index} />
+          ))}
+        </div>
+        <div className="carousel-arrows">
+          <button onClick={() => go(-1)} aria-label="Previous slide"><ArrowLeft size={20} /></button>
+          <button onClick={() => go(1)} aria-label="Next slide"><ArrowRight size={20} /></button>
+        </div>
+      </div>
+    </section>
+  )
+}
 
 type Card = { tag?: string; title: string; body?: string; image: string }
 
@@ -136,16 +176,7 @@ export default function Page() {
         <CardGrid items={insideStories} />
       </section>
 
-      {promos.map((promo) => (
-        <section className={`promo-band reveal-section${promo.reverse ? ' reverse' : ''}`} key={promo.title}>
-          <div className="promo-copy">
-            <h2>{promo.title}</h2>
-            <p>{promo.body}</p>
-            <a className="dark-link" href={promo.href}>{promo.cta} <ArrowUpRight size={18} /></a>
-          </div>
-          <div className="promo-image" style={{ backgroundImage: `url(${promo.image})` }} />
-        </section>
-      ))}
+      <PreFooterCarousel slides={promos} />
 
       <SiteFooter />
       {cookieOpen && <div className="cookie-banner"><div><strong>Capgemini cares about your privacy</strong><p>We use cookies to enhance your experience on our website and to improve our services. Choose your preferences at any time.</p></div><div className="cookie-actions"><button onClick={() => setCookieOpen(false)}>Accept all</button><button onClick={() => setCookieOpen(false)}>Manage settings</button><button onClick={() => setCookieOpen(false)}>Decline all</button></div></div>}
