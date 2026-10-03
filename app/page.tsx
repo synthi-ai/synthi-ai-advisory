@@ -50,19 +50,27 @@ type Promo = { title: string; body: string; cta: string; href: string; image: st
 
 function PreFooterCarousel({ slides }: { slides: Promo[] }) {
   const [index, setIndex] = useState(0)
+  const [paused, setPaused] = useState(false)
   const count = slides.length
   const go = (delta: number) => setIndex((prev) => (prev + delta + count) % count)
+  const pad = (value: number) => String(value).padStart(2, '0')
 
   useEffect(() => {
+    if (paused) return
     const timer = setInterval(() => setIndex((prev) => (prev + 1) % count), 7000)
     return () => clearInterval(timer)
-  }, [count])
+  }, [count, paused])
 
   return (
-    <section className="prefooter-carousel reveal-section" aria-roledescription="carousel">
+    <section
+      className="prefooter-carousel reveal-section"
+      aria-roledescription="carousel"
+      onMouseEnter={() => setPaused(true)}
+      onMouseLeave={() => setPaused(false)}
+    >
       <div className="carousel-track" style={{ transform: `translateX(-${index * 100}%)` }}>
         {slides.map((slide, i) => (
-          <div className="carousel-slide" key={slide.title} style={{ backgroundImage: `url(${slide.image})` }} aria-hidden={i !== index}>
+          <div className={`carousel-slide${i === index ? ' active' : ''}`} key={slide.title} style={{ backgroundImage: `url(${slide.image})` }} aria-hidden={i !== index}>
             <div className="carousel-content">
               <h2>{slide.title}</h2>
               <p>{slide.body}</p>
@@ -77,9 +85,12 @@ function PreFooterCarousel({ slides }: { slides: Promo[] }) {
             <button key={slide.title} className={i === index ? 'active' : ''} onClick={() => setIndex(i)} aria-label={`Go to slide ${i + 1}`} aria-current={i === index} />
           ))}
         </div>
-        <div className="carousel-arrows">
-          <button onClick={() => go(-1)} aria-label="Previous slide"><ArrowLeft size={20} /></button>
-          <button onClick={() => go(1)} aria-label="Next slide"><ArrowRight size={20} /></button>
+        <div className="carousel-nav">
+          <span className="carousel-count">{pad(index + 1)} <i>/</i> {pad(count)}</span>
+          <div className="carousel-arrows">
+            <button onClick={() => go(-1)} aria-label="Previous slide"><ArrowLeft size={20} /></button>
+            <button onClick={() => go(1)} aria-label="Next slide"><ArrowRight size={20} /></button>
+          </div>
         </div>
       </div>
     </section>

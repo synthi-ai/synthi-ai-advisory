@@ -1630,3 +1630,14 @@ footer p {
   .carousel-controls { padding: 0 24px; bottom: 26px; }
   .carousel-arrows button { width: 42px; height: 42px; }
 }
+
+/* ── Carousel refinements ── */
+.carousel-nav { display: flex; align-items: center; gap: 22px; }
+.carousel-count { color: #fff; font-size: 13px; letter-spacing: 1px; font-variant-numeric: tabular-nums; }
+.carousel-count i { margin: 0 3px; color: #ffffff66; font-style: normal; }
+.carousel-content > * { opacity: 0; }
+.carousel-slide.active .carousel-content > * { animation: revealUp .6s cubic-bezier(.2, .7, .2, 1) both; }
+.carousel-slide.active .carousel-content > *:nth-child(1) { animation-delay: .05s; }
+.carousel-slide.active .carousel-content > *:nth-child(2) { animation-delay: .15s; }
+.carousel-slide.active .carousel-content > *:nth-child(3) { animation-delay: .25s; }
+@media (max-width: 900px) { .carousel-nav { gap: 14px; } .carousel-count { font-size: 12px; } }
